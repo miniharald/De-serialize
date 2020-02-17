@@ -27,4 +27,13 @@ public class HockeyTeam implements Serializable {
     private String generateId() {
         return String.valueOf(System.currentTimeMillis());
     }
+
+    @Override
+    public String toString() {
+        String displayRoster = "";
+        for (HockeyPlayer player : roster) {
+            displayRoster += player + "\n";
+        }
+        return String.format("%s:\n%s", name, displayRoster);
+    }
 }

@@ -12,11 +12,13 @@ class Program {
     private List<HockeyTeam> teams = new ArrayList<>();
     private Serializor serializor = new Serializor();
     private TeamMaker teamMaker;
+    private Menu menu;
 
     Program() {
         load();
-        teamMaker = new TeamMaker(this);
-        serializor.serialize("teams/" + teams.get(teams.size() - 1).getId() + ".ht", teams.get(0));
+        this.teamMaker = new TeamMaker(this);
+        this.menu = new Menu(this);
+        menu.mainMenu();
     }
 
     List<HockeyTeam> getTeams() {

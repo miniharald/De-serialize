@@ -5,13 +5,8 @@ import java.io.*;
 class Serializor {
 
     void serialize(String fileName, Object object) {
-        try {
-            FileOutputStream file =
-                    new FileOutputStream(fileName);
-            ObjectOutputStream output = new ObjectOutputStream(file);
+        try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(fileName))) {
             output.writeObject(object);
-            output.close();
-            file.close();
         } catch (IOException i) {
             System.out.println("Någon blev fel när filen skulle skapas!");
             i.printStackTrace();
@@ -20,12 +15,8 @@ class Serializor {
 
     Object deserialize(String path) {
         Object object = null;
-        try {
-            FileInputStream file = new FileInputStream(path);
-            ObjectInputStream fileObject = new ObjectInputStream(file);
+        try (ObjectInputStream fileObject = new ObjectInputStream(new FileInputStream(path))) {
             object = fileObject.readObject();
-            fileObject.close();
-            file.close();
         } catch (IOException i) {
             System.out.println("Något blev fel vid inläsningen!");
             i.printStackTrace();

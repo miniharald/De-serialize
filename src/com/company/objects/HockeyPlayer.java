@@ -15,4 +15,9 @@ class HockeyPlayer implements Serializable {
     private String generateId() {
         return String.valueOf(System.currentTimeMillis());
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
